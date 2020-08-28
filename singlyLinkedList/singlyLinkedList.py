@@ -31,15 +31,18 @@ class LinkedList:
     
     def delete(self, index):
         i = 0
-        current = self.head
         previous = None
+        current = self.head
 
         while i < index:
             previous = current
             current = current.next
+            i += 1
 
-        if previous == None:    #If at the head of the list 
+        if current == self.head:
             self.head = current.next
+        elif not current:
+            previous.next = None
         else:
             previous.next = current.next
 
@@ -68,6 +71,11 @@ if __name__ == "__main__":
 
     ll.print()              #Print the values (Should return 1, 2, 3, 4)
 
+    ll.delete(3)            #Delete the last element
+
+    ll.print()              #Print the values (Should return 1, 2, 3)
+
+    
     ll.delete(3)            #Delete the last element
 
     ll.print()              #Print the values (Shold return 1, 2, 3)
